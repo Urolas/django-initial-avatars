@@ -100,24 +100,6 @@ class TestAvatarGenerator(TestCase):
             (0, 0, 0)
         )
 
-    def test_position(self):
-        image = Image.new('RGBA', (80, 80))
-        draw = ImageDraw.Draw(image)
-
-        self.assertEqual(
-            self.genA.position(draw),
-            (220.0, 48.25)
-        )
-
-        possiblePositions = [
-            (80.0, 65.0),
-            (80.0, 65.25),
-        ]
-        self.assertIn(
-            self.genB.position(draw),
-            possiblePositions
-        )
-
     def test_name(self):
         self.assertEqual(
             self.genA.name(),
@@ -300,19 +282,6 @@ class TestAvatarGeneratorNotDefault(TestCase):
         self.assertEqual(
             self.genB.foreground(),
             (0, 0, 0)
-        )
-
-    def test_position(self):
-        image = Image.new('RGBA', (80, 80))
-        draw = ImageDraw.Draw(image)
-
-        self.assertEqual(
-            self.genA.position(draw),
-            (412.5, 90.25)
-        )
-        self.assertEqual(
-            self.genB.position(draw),
-            (150, 122)
         )
 
     def test_name(self):

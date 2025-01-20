@@ -113,17 +113,17 @@ class TestAvatarGenerator(TestCase):
     def test_path(self):
         self.assertEqual(
             self.genA.path(),
-            "avatars/5c2b143bbec43c5a4e0f18000ebd3280/80x80_square.jpg"
+            "avatars\\8ac609169cd18386d2e1800b253511ce\\80x80_square.jpg"
         )
         self.assertEqual(
             self.genB.path(),
-            "avatars/579e0547027d49009b38d4ed91afb84d/80x80_square.jpg"
+            "avatars\\a777f9544392312fd067b7d4762ea083\\80x80_square.jpg"
         )
 
     def test_get_avatar_url(self):
         self.assertEqual(
             self.genA.get_avatar_url(),
-            "http://django-initial-avatars.py/avatars/5c2b143bbec43c5a4e0f18000ebd3280/80x80_square.jpg"
+            "http://django-initial-avatars.py/avatars/8ac609169cd18386d2e1800b253511ce/80x80_square.jpg"
         )
         self.assertIn(
             self.genB.get_avatar_url(),
@@ -138,14 +138,14 @@ class TestAvatarGenerator(TestCase):
         )
 
     def test_get_avatar(self):
-        default_storage.delete('avatars/5c2b143bbec43c5a4e0f18000ebd3280/80x80_square@2x.jpg')
+        default_storage.delete('avatars/8ac609169cd18386d2e1800b253511ce/80x80_square@2x.jpg')
         default_storage.delete(self.genA.path())
 
         self.assertFalse(default_storage.exists(self.genA.path()))
 
         self.assertEqual(
             self.genA.get_avatar(),
-            '<img class="initial-avatar" src="http://django-initial-avatars.py/avatars/5c2b143bbec43c5a4e0f18000ebd3280/80x80_square.jpg" width="80" height="80"/>'
+            '<img class="initial-avatar" src="http://django-initial-avatars.py/avatars/8ac609169cd18386d2e1800b253511ce/80x80_square.jpg" width="80" height="80"/>'
         )
         self.assertIn(
             self.genB.get_avatar(),
@@ -177,7 +177,7 @@ class TestAvatarGenerator(TestCase):
 
         self.assertEqual(
             renderedA,
-            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/5c2b143bbec43c5a4e0f18000ebd3280/80x80_square.jpg" width="80" height="80"/>'
+            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/8ac609169cd18386d2e1800b253511ce/80x80_square.jpg" width="80" height="80"/>'
         )
         self.assertIn(
             renderedB,
@@ -297,17 +297,17 @@ class TestAvatarGeneratorNotDefault(TestCase):
     def test_path(self):
         self.assertEqual(
             self.genA.path(),
-            "avatars/1de33e9ce3bb61b6f82a27810590a785/150x150_circle.png"
+            "avatars\\963f42f411a171630625f6163ef581c3\\150x150_circle.png"
         )
         self.assertEqual(
             self.genB.path(),
-            "avatars/579e0547027d49009b38d4ed91afb84d/150x150_square.jpg"
+            "avatars\\a777f9544392312fd067b7d4762ea083\\150x150_square.jpg"
         )
 
     def test_get_avatar_url(self):
         self.assertEqual(
             self.genA.get_avatar_url(),
-            "http://django-initial-avatars.py/avatars/1de33e9ce3bb61b6f82a27810590a785/150x150_circle.png"
+            "http://django-initial-avatars.py/avatars/963f42f411a171630625f6163ef581c3/150x150_circle.png"
         )
         self.assertIn(
             self.genB.get_avatar_url(),
@@ -323,12 +323,12 @@ class TestAvatarGeneratorNotDefault(TestCase):
 
     def test_get_avatar(self):
         default_storage.delete(self.genA.path())
-        default_storage.delete('avatars/1de33e9ce3bb61b6f82a27810590a785/150x150_circle@2x.png')
+        default_storage.delete('avatars/963f42f411a171630625f6163ef581c3/150x150_circle@2x.png')
         self.assertFalse(default_storage.exists(self.genA.path()))
 
         self.assertEqual(
             self.genA.get_avatar(),
-            '<img class="initial-avatar" src="http://django-initial-avatars.py/avatars/1de33e9ce3bb61b6f82a27810590a785/150x150_circle.png" width="150" height="150"/>'
+            '<img class="initial-avatar" src="http://django-initial-avatars.py/avatars/963f42f411a171630625f6163ef581c3/150x150_circle.png" width="150" height="150"/>'
         )
         self.assertIn(
             self.genB.get_avatar(),
@@ -360,7 +360,7 @@ class TestAvatarGeneratorNotDefault(TestCase):
 
         self.assertEqual(
             renderedA,
-            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/1de33e9ce3bb61b6f82a27810590a785/150x150_circle.png" width="150" height="150"/>'
+            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/963f42f411a171630625f6163ef581c3/150x150_circle.png" width="150" height="150"/>'
         )
         self.assertIn(
             renderedB,
@@ -384,7 +384,7 @@ class TestAvatarGeneratorNotDefault(TestCase):
 
         self.assertEqual(
             renderedA,
-            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/1de33e9ce3bb61b6f82a27810590a785/200x200_square.jpg" width="200" height="200"/>'
+            u' <img class="initial-avatar" src="http://django-initial-avatars.py/avatars/963f42f411a171630625f6163ef581c3/200x200_square.jpg" width="200" height="200"/>'
         )
 
     def test_view(self):

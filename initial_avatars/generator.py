@@ -10,7 +10,7 @@ except ImportError:
 from django.utils.html import escape
 from django.utils import timezone
 from django.conf import settings
-from django.core.files.storage import default_storage, get_storage_class
+from django.core.files.storage import default_storage, storages
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
@@ -36,7 +36,7 @@ except AttributeError:
     pass
 
 try:
-    AVATAR_STORAGE_BACKEND = get_storage_class(settings.AVATAR_STORAGE_BACKEND)()
+    AVATAR_STORAGE_BACKEND = storages[settings.AVATAR_STORAGE_BACKEND]
 except AttributeError:
     AVATAR_STORAGE_BACKEND = default_storage
 

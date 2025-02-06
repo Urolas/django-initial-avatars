@@ -9,17 +9,17 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-initial-avatars',
+    name='django4-initial-avatars',
     version=__version__,
     packages=['initial_avatars', 'initial_avatars.templatetags'],
     include_package_data=True,
     license='BSD License',
-    description='A simple Django app to get avatars based on username and initials if no gravatars is associated with the email address.',
+    description='A simple Django app to get avatars based on username and initials if no gravatars is associated with the email address. Forked from axiome-oss.',
     keywords='django avatar gravatar',
     long_description=open('README.rst').read(),
-    url='https://github.com/axiome-oss/django-initial-avatars',
-    author='Mathieu Requillart',
-    author_email='mathieu.requillart@gmail.com',
+    url='https://github.com/Urolas/django4-initial-avatars',
+    author='Sophanna NGOV',
+    author_email='sophanna.ngov@gmail.com',
     install_requires=[
         'Pillow',
         'Django',
@@ -42,6 +42,7 @@ setup(
         'Framework :: Django :: 1.10',
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
+        'Framework :: Django :: 4.2',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

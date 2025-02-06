@@ -1,3 +1,7 @@
+v0.9.1:
+	- django 4.2 compatible
+	- updated initials centering method
+
 v0.9:
 	- add compatibility with retina screens 'AVATAR_HIGH_RESOLUTION' settings
 	- add 'AVATAR_COLORS' settings to choose avatar colors from defined list

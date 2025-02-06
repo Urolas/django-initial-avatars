@@ -6,6 +6,7 @@ This project is a fork of the original repository published by **AXIOME SAS** in
 Modifications made by **Urolas** in 2025 include:  
 
 - Migration to Django 4
+- Updated centering method of initials
 
 .. image:: https://badge.fury.io/py/django-initial-avatars.svg  
     :target: https://badge.fury.io/py/django-initial-avatars

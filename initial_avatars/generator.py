@@ -10,7 +10,7 @@ except ImportError:
 from django.utils.html import escape
 from django.utils import timezone
 from django.conf import settings
-from django.core.files.storage import default_storage, get_storage_class
+from django.core.files.storage import default_storage, storages
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
@@ -36,7 +36,7 @@ except AttributeError:
     pass
 
 try:
-    AVATAR_STORAGE_BACKEND = get_storage_class(settings.AVATAR_STORAGE_BACKEND)()
+    AVATAR_STORAGE_BACKEND = storages[settings.AVATAR_STORAGE_BACKEND]
 except AttributeError:
     AVATAR_STORAGE_BACKEND = default_storage
 
@@ -141,15 +141,6 @@ class AvatarGenerator(object):
             else:
                 return (255, 255, 255)
 
-    def position(self, draw):
-        """
-            returns the position where the initials must be printed
-        """
-        text_width, text_height = draw.textsize(self.text(), font=self.font())
-        left = ((self.work_size - text_width) / 2)
-        top = ((self.work_size - text_height) / 4)
-        return left, top
-
     def text(self):
         """
             returns the text to be printed on the avatar
@@ -204,8 +195,8 @@ class AvatarGenerator(object):
         draw = ImageDraw.Draw(work_image)
         if self.shape == 'circle':
             draw.ellipse((0, 0, self.work_size, self.work_size), fill=self.background())
-        w, h = self.position(draw)
-        draw.text((w, h), self.text(), fill=self.foreground(), font=self.font())
+        center = self.work_size / 2
+        draw.text((center, center), self.text(), fill=self.foreground(), font=self.font(), anchor = "mm")
         image = work_image.resize((self.size, self.size), resample=Image.BILINEAR)
         self.url = self.save_avatar(image)
         if AVATAR_HIGH_RESOLUTION:
